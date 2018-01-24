@@ -1,7 +1,6 @@
 ;; The first three lines of this file were inserted by DrRacket. They record metadata
 ;; about the language level of this file in a form that our tools can easily process.
 #reader(lib "htdp-intermediate-lambda-reader.ss" "lang")((modname |Decimal to Binary|) (read-case-sensitive #t) (teachpacks ((lib "image.ss" "teachpack" "htdp"))) (htdp-settings #(#t constructor repeating-decimal #f #t none #f ((lib "image.ss" "teachpack" "htdp")) #t)))
-
 ;; (dec->bin x) produces the binary value of the decimal x
 ;; Nat -> Nat
 ;; Examples:
@@ -40,23 +39,10 @@
                   [else (+ 1 (find-digits (quotient z b)))]))]
     (dec->bin/acc x 0 0 (find-digits x))))
 
-;; (base->dec x b) produces the decimal value of x from base b
-;; Nat Nat -> Nat
-;; requires: 2 <= b <= 10
-;; Examples:
-(check-expect (base->dec 111 2) 7)
-(check-expect (base->dec 1111 2) 15)
-(check-expect (base->dec 0 7) 0)
-
-(define (base->dec x b)
-  (local [(define (base->dec/acc x b i)
-            (cond [(< x 10) (* x (expt b i))]
-                  [else (+ (* (remainder x 10) (expt b i))
-                           (base->dec/acc (quotient x 10) b (add1 i)))]))]
-    (base->dec/acc x b 0)))
 
 
 
 
 
-          
+
+         
